@@ -1,5 +1,8 @@
 # Docker PHP 7 Cli with MySQL Server 5.6
 
+This Docker Image is a clone of the original here: https://github.com/JimmyBeats/docker-images/tree/master/php7-mysql-aws
+Thank you to James for creating the original code. 
+
 A Docker image with PHP 7 Cli and MySQL Server 5.6 and a whole bunch of related deployment tools for end to end testing, builds and deployments of a PHP7 application.
 
 This package contains:
