@@ -74,7 +74,7 @@ RUN apt-get install -y mysql-server-5.5
 RUN apt-get -y install ruby wget python
 RUN wget https://bootstrap.pypa.io/get-pip.py
 RUN python get-pip.py
-RUN apt-get install build-essential
+RUN apt-get -y install ruby-dev
 RUN gem install sass
 
 # Install AWS CLI
