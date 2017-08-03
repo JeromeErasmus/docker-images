@@ -32,13 +32,13 @@ RUN pecl install xdebug \
 && echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # Install Redis
-#RUN pecl install -o -f redis-3.1.1 \
-#&& rm -rf /tmp/pear \
-#&& docker-php-ext-enable redis
+RUN pecl install -o -f redis-3.1.1 \
+&& rm -rf /tmp/pear \
+&& docker-php-ext-enable redis
 
 # Install Xsl
-#RUN apt-get install libxslt1.1 libxslt1-dev \
-#&& docker-php-ext-install xsl
+RUN apt-get install libxslt1.1 libxslt1-dev \
+&& docker-php-ext-install xsl
 
 # Install Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
@@ -78,7 +78,7 @@ RUN apt-get -y install ruby-dev
 RUN gem install sass
 
 # Install AWS CLI
-#RUN pip install awscli
+RUN pip install awscli
 
 # Install Bitbucket/Snippet CLI tools
 RUN pip install pybitbucket
