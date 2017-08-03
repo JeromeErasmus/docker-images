@@ -66,9 +66,9 @@ RUN COMPOSER_HOME=/opt/.composer composer global require "phpmd/phpmd:@stable" \
 && ln -s /opt/.composer/vendor/bin/phpmd /usr/local/bin/
 
 # Install MySQL
-#RUN echo 'mysql-server-5.5 mysql-server/root_password password password' | debconf-set-selections
-#RUN echo 'mysql-server-5.5 mysql-server/root_password_again password password' |debconf-set-selections
-#RUN apt-get install -y mysql-server-5.5 
+RUN echo 'mysql-server-5.5 mysql-server/root_password password password' | debconf-set-selections
+RUN echo 'mysql-server-5.5 mysql-server/root_password_again password password' |debconf-set-selections
+RUN apt-get install -y mysql-server-5.5 
 
 # Install Python-Pip, Ruby and Sass
 RUN apt-get -y install ruby wget python
@@ -81,8 +81,8 @@ RUN gem install sass
 #RUN pip install awscli
 
 # Install Bitbucket/Snippet CLI tools
-#RUN pip install pybitbucket
-#RUN pip install git+https://bitbucket.org/atlassian/snippet.git
+RUN pip install pybitbucket
+RUN pip install git+https://bitbucket.org/atlassian/snippet.git
 
 # Install Node/NPM/Coffeescript and Grunt
 RUN apt-get -y install nodejs npm
