@@ -3,6 +3,7 @@ FROM php:7.0
 MAINTAINER James Beattie
 
 # Install Composer Dependencies
+RUN apt-get update
 RUN apt-get -y update \
 && apt-get -y install git unzip zlib1g-dev tofrodos
 
