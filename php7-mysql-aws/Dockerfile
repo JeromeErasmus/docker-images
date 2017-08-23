@@ -1,4 +1,4 @@
-FROM php:7.0
+FROM php:7.0.18
 
 MAINTAINER Jerome Erasmus
 
@@ -72,7 +72,6 @@ RUN apt-get -y remove --purge mysql\*
 RUN apt-get -y autoremove
 RUN apt-get autoclean
 RUN apt-get -y dist-upgrade
-RUN apt-get update && apt-get upgrade
 
 RUN echo 'mysql-server mysql-server/root_password password password' | debconf-set-selections
 RUN echo 'mysql-server mysql-server/root_password_again password password' |debconf-set-selections
@@ -108,4 +107,6 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 # Set Tar compression to maximum
 RUN export GZIP=-9
 
-
+# Clear all unnecessary files
+RUN apt-get autoremove -y \
+&& apt-get clean all
