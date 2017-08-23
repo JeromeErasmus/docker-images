@@ -1,4 +1,4 @@
-FROM php:7.0.18
+FROM php:7.0.22
 
 MAINTAINER James Beattie
 
