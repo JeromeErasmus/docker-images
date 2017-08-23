@@ -1,6 +1,6 @@
 FROM php:7.0
 
-MAINTAINER James Beattie
+MAINTAINER Jerome Erasmus
 
 # Install Composer Dependencies
 RUN apt-get -y update \
@@ -71,7 +71,6 @@ RUN apt-get purge -y mysql-*
 RUN apt-get -y remove --purge mysql\*
 RUN apt-get -y autoremove
 RUN apt-get autoclean
-RUN deluser mysql
 RUN apt-get -y dist-upgrade
 RUN apt-get update && apt-get upgrade
 
