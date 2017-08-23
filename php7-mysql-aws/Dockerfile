@@ -68,9 +68,16 @@ RUN COMPOSER_HOME=/opt/.composer composer global require "phpmd/phpmd:@stable" \
 # Install MySQL
 RUN apt-get remove -y mysql-*
 RUN apt-get purge -y mysql-*
+RUN apt-get -y remove --purge mysql\*
+RUN apt-get -y autoremove
+RUN apt-get autoclean
+RUN deluser mysql
+RUN apt-get -y dist-upgrade
+RUN apt-get update && apt-get upgrade
+
 RUN echo 'mysql-server mysql-server/root_password password password' | debconf-set-selections
 RUN echo 'mysql-server mysql-server/root_password_again password password' |debconf-set-selections
-RUN apt-get install -y mysql-server
+RUN apt-get install -y mysql-server mysql-client
 
 # Install Python-Pip, Ruby and Sass
 RUN apt-get -y install ruby wget python
