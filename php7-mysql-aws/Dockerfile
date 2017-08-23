@@ -3,7 +3,6 @@ FROM php:7.0
 MAINTAINER James Beattie
 
 # Install Composer Dependencies
-RUN apt-get update
 RUN apt-get -y update \
 && apt-get -y install git unzip zlib1g-dev tofrodos
 
@@ -67,6 +66,8 @@ RUN COMPOSER_HOME=/opt/.composer composer global require "phpmd/phpmd:@stable" \
 && ln -s /opt/.composer/vendor/bin/phpmd /usr/local/bin/
 
 # Install MySQL
+RUN apt-get remove -y mysql-*
+RUN apt-get purge -y mysql-*
 RUN echo 'mysql-server mysql-server/root_password password password' | debconf-set-selections
 RUN echo 'mysql-server mysql-server/root_password_again password password' |debconf-set-selections
 RUN apt-get install -y mysql-server
