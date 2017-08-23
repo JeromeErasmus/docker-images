@@ -1,8 +1,9 @@
 FROM php:7.0.18
 
-MAINTAINER Jerome Erasmus
+MAINTAINER James Beattie
 
 # Install Composer Dependencies
+RUN apt-get update
 RUN apt-get -y update \
 && apt-get -y install git unzip zlib1g-dev tofrodos
 
@@ -66,16 +67,9 @@ RUN COMPOSER_HOME=/opt/.composer composer global require "phpmd/phpmd:@stable" \
 && ln -s /opt/.composer/vendor/bin/phpmd /usr/local/bin/
 
 # Install MySQL
-RUN apt-get remove -y mysql-*
-RUN apt-get purge -y mysql-*
-RUN apt-get -y remove --purge mysql\*
-RUN apt-get -y autoremove
-RUN apt-get autoclean
-RUN apt-get -y dist-upgrade
-
-RUN echo 'mysql-server mysql-server/root_password password password' | debconf-set-selections
-RUN echo 'mysql-server mysql-server/root_password_again password password' |debconf-set-selections
-RUN apt-get install -y mysql-server mysql-client
+RUN echo 'mysql-server-5.5 mysql-server/root_password password password' | debconf-set-selections
+RUN echo 'mysql-server-5.5 mysql-server/root_password_again password password' |debconf-set-selections
+RUN apt-get install -y mysql-server-5.5 
 
 # Install Python-Pip, Ruby and Sass
 RUN apt-get -y install ruby wget python
