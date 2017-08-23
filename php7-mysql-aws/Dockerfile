@@ -108,6 +108,4 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 # Set Tar compression to maximum
 RUN export GZIP=-9
 
-# Clear all unnecessary files
-RUN apt-get autoremove -y \
-&& apt-get clean all
+
