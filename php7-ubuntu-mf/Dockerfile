@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 MAINTAINER JeromeErasmus
- 
+
 # Set correct environment variables
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
